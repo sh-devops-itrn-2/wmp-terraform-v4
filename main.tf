@@ -29,6 +29,8 @@ variable "components" {
 
 resource "null_resource" "ansible" {
 
+  depends_on = [aws_route53_record.dns]
+
   for_each = var.components
   provisioner "remote-exec" {
 
